@@ -25,11 +25,15 @@ public class ViewController {
 	
 	@FXML
 	public void onBtSumAction() {
+		try {
 		Locale.setDefault(Locale.US);
 		double number1 = Double.parseDouble(txtNumber1.getText());
 		double numer2 = Double.parseDouble(txtNumber2.getText());
 		double sum = number1 + numer2;
 		labelResult.setText(String.format("%.2f", sum));
+		}catch(NumberFormatException e) {
+			Alerts.showAlert("Error", "Parse error", e.getMessage(), AlertType.ERROR);
+		}
 	
 	}
 	
